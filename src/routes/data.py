@@ -16,7 +16,7 @@ data_router = APIRouter(
     tags=["api_v1", "data"],
 )
 
-@data_router.post("/upload/{project_id}")
+@data_router.post("/upload/{project_id}")   
 async def upload_data(project_id: str, file: UploadFile, app_settings: settings = Depends(get_settings)):
     
     data_controller = DataController()
@@ -31,7 +31,7 @@ async def upload_data(project_id: str, file: UploadFile, app_settings: settings 
         )
 
     project_dir_path = ProjectController().get_project_path(project_id=project_id)
-    file_path = data_controller.generate_unique_filename(
+    file_path, file_id = data_controller.generate_unique_filepath(
         orig_file_name=file.filename,
         project_id=project_id   
     )
@@ -57,7 +57,7 @@ async def upload_data(project_id: str, file: UploadFile, app_settings: settings 
                 
                 
     return JSONResponse(
-                content={"signal": ResponseSignal.FILE_UPLOAD_SUCCESSFUL.value} 
+                content={"signal": ResponseSignal.FILE_UPLOAD_SUCCESSFUL.value, "file_id": file_id}
             )
 
     

@@ -5,10 +5,10 @@ services:
     container_name: mongodb
     
     ports:
-      - "27017:27017"
+      - "27007:27017"
     
     volumes:
-      - ./mongodb:/data/db
+      - mongodata:/data/db
     
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
@@ -21,3 +21,6 @@ services:
 
 networks:
   backend:
+
+volumes:
+  mongodata:

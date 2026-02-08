@@ -54,7 +54,7 @@ async def index_project(request: Request, project_id: int, push_request: PushReq
     # create collection if not exists
     collection_name = nlp_controller.create_collection_name(project_id=project.project_id)
 
-    _ = request.app.vectordb_client.create_collection(
+    _ = await request.app.vectordb_client.create_collection(
         collection_name=collection_name,
         embedding_size=request.app.embedding_client.embedding_size,
         do_reset=push_request.do_reset,
@@ -73,7 +73,7 @@ async def index_project(request: Request, project_id: int, push_request: PushReq
             has_records = False
             break
 
-        chunks_ids = [ c.chunk_id for c in page_chunks ]
+        chunks_ids =  [ c.chunk_id for c in page_chunks ]
         idx += len(page_chunks)
         
         is_inserted = await nlp_controller.index_into_vector_db(

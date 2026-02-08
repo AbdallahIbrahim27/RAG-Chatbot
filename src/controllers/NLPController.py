@@ -16,15 +16,15 @@ class NLPController(BaseController):
         self.template_parser = template_parser
 
     def create_collection_name(self, project_id: str):
-        return f"collection_{self.embedding_client.embedding_size}_{project_id}".strip()
+        return f"collection_{self.vectordb_client.default_vector_size}_{project_id}".strip()
     
     async def reset_vector_db_collection(self, project: Project):
         collection_name = self.create_collection_name(project_id=project.project_id)
-        return self.vectordb_client.delete_collection(collection_name=collection_name)
+        return await self.vectordb_client.delete_collection(collection_name=collection_name)
     
     async def get_vector_db_collection_info(self, project: Project):
         collection_name = self.create_collection_name(project_id=project.project_id)
-        collection_info = self.vectordb_client.get_collection_info(collection_name=collection_name)
+        collection_info = await self.vectordb_client.get_collection_info(collection_name=collection_name)
 
         return json.loads(
             json.dumps(collection_info, default=lambda x: x.__dict__)
@@ -44,14 +44,14 @@ class NLPController(BaseController):
                                                   document_type=DocumentTypeEnum.DOCUMENT.value)
 
         # step3: create collection if not exists
-        _ = self.vectordb_client.create_collection(
+        _ = await self.vectordb_client.create_collection(
             collection_name=collection_name,
             embedding_size=self.embedding_client.embedding_size,
             do_reset=do_reset,
         )
 
         # step4: insert into vector db
-        _ = self.vectordb_client.insert_many(
+        _ = await self.vectordb_client.insert_many(
             collection_name=collection_name,
             texts=texts,
             metadata=metadata,
@@ -81,7 +81,7 @@ class NLPController(BaseController):
             return False    
 
         # step3: do semantic search
-        results = self.vectordb_client.search_by_vector(
+        results = await self.vectordb_client.search_by_vector(
             collection_name=collection_name,
             vector=query_vector,
             limit=limit
@@ -138,3 +138,4 @@ class NLPController(BaseController):
         )
 
         return answer, full_prompt, chat_history
+

@@ -1,4 +1,4 @@
-# 🤖 Mini-RAG: Production-Ready RAG Chatbot System
+# 🤖 RAG: Production-Ready RAG Chatbot System
 
 <div align="center">
 
@@ -34,7 +34,7 @@
 
 ## 🎯 Overview
 
-**Mini-RAG** is a minimalist yet powerful implementation of a Retrieval-Augmented Generation (RAG) system designed for building intelligent chatbots that answer questions based on your document collections. The system combines semantic search with large language models to provide accurate, context-aware responses, leveraging PostgreSQL with PGVector for efficient vector storage and Google Colab GPU infrastructure for accelerated model inference.
+**RAG System** is a minimalist yet powerful implementation of a Retrieval-Augmented Generation (RAG) system designed for building intelligent chatbots that answer questions based on your document collections. The system combines semantic search with large language models to provide accurate, context-aware responses, leveraging PostgreSQL with PGVector for efficient vector storage and Google Colab GPU infrastructure for accelerated model inference.
 
 ### What is RAG?
 

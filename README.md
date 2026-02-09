@@ -67,7 +67,7 @@ Retrieval-Augmented Generation enhances LLM responses by:
 - 🌍 **Multilingual**: Built-in support for English and Arabic prompts
 - 🎯 **Project Management**: Organize documents into separate projects
 - ⚡ **Batch Processing**: Efficient batch embedding and indexing
-- 🔌 **REST API**: Clean, well-documented FastAPI endpoints
+- 🔌 **FAST API**: Clean, well-documented FastAPI endpoints
 
 ### Technical Highlights
 
@@ -88,7 +88,7 @@ Retrieval-Augmented Generation enhances LLM responses by:
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         Client Layer                             │
-│                   (REST API Endpoints)                           │
+│                   (FAST API Endpoints)                           │
 └────────────────────────┬────────────────────────────────────────┘
                          │
 ┌────────────────────────▼────────────────────────────────────────┐
@@ -118,7 +118,7 @@ Retrieval-Augmented Generation enhances LLM responses by:
                                       │  │   Ollama GPU Runtime (Remote)    │ │
                                       │  │  • Google Colab (Free T4 GPU)    │ │
                                       │  │  • ngrok Tunnel (Secure Access)  │ │
-                                      │  │  • REST API Endpoint             │ │
+                                      │  │  • FAST API Endpoint             │ │
                                       │  └─────────────────────────────────┘ │
                                       └────────────────────────────────────────┘
 ```
@@ -462,7 +462,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init-scripts:/docker-entrypoint-initdb.d
     command: postgres -c shared_buffers=${POSTGRES_SHARED_BUFFERS:-256MB}
-    restart: unless-stopped
+    FASTart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 10s
@@ -479,7 +479,7 @@ services:
       - qdrant_data:/qdrant/storage
     environment:
       QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY}
-    restart: unless-stopped
+    FASTart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:6333/healthz"]
       interval: 10s
@@ -1630,8 +1630,8 @@ docker compose exec postgres psql -U admin -d mini_rag_db -c "\conninfo"
 # Test connection from host
 psql -h localhost -p 5432 -U admin -d mini_rag_db
 
-# Restart PostgreSQL
-docker compose restart postgres
+# FASTart PostgreSQL
+docker compose FASTart postgres
 ```
 
 #### 2. PGVector Extension Issues
@@ -1688,8 +1688,8 @@ docker compose logs qdrant
 # Verify Qdrant is accessible
 curl http://localhost:6333/collections
 
-# Restart Qdrant
-docker compose restart qdrant
+# FASTart Qdrant
+docker compose FASTart qdrant
 
 # Check Qdrant dashboard
 open http://localhost:6333/dashboard
@@ -1710,7 +1710,7 @@ from pyngrok import ngrok
 tunnels = ngrok.get_tunnels()
 print(tunnels)
 
-# Restart tunnel if needed
+# FASTart tunnel if needed
 ngrok.kill()
 public_url = ngrok.connect(11434, "http")
 print(f"New URL: {public_url}")
@@ -1742,7 +1742,7 @@ print(response.json())
 **Solutions**:
 - Run the auto-click JavaScript code (see Installation section)
 - Use Colab Pro for longer sessions (24 hours)
-- Set up automatic session restarter
+- Set up automatic session FASTarter
 - Consider self-hosting Ollama on a dedicated server
 
 #### 5. GPU Memory Issues
@@ -2005,7 +2005,7 @@ services:
 -- Use strong passwords
 POSTGRES_PASSWORD=$(openssl rand -base64 32)
 
--- Restrict network access
+-- FASTrict network access
 # docker-compose.yml
 services:
   postgres:

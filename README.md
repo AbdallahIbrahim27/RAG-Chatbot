@@ -4,7 +4,7 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-green)
-![License](https://img.shields.io/badge/license-MIT-blue)
+![License](https://img.shields.io/badge/license-Apache%202.0-blue)
 ![Status](https://img.shields.io/badge/status-active-success)
 
 *A modular, production-ready Retrieval-Augmented Generation (RAG) system for intelligent question answering over document collections.*

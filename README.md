@@ -30,10 +30,6 @@
 - [RAG Pipeline](#-rag-pipeline)
 - [Development](#-development)
 - [Troubleshooting](#-troubleshooting)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
-
 ---
 
 ## 🎯 Overview
@@ -1966,67 +1962,6 @@ services:
 
 ---
 
-## 🤝 Contributing
-
-We welcome contributions! Please follow these guidelines:
-
-### How to Contribute
-
-1. **Fork the Repository**
-   ```bash
-   git clone https://github.com/yourusername/mini-rag.git
-   cd mini-rag
-   git checkout -b feature/your-feature-name
-   ```
-
-2. **Set Up Development Environment**
-   ```bash
-   conda create -n mini-rag-dev python=3.8
-   conda activate mini-rag-dev
-   pip install -r requirements.txt -r requirements-dev.txt
-   pre-commit install
-   ```
-
-3. **Make Your Changes**
-   - Follow code style guidelines (Black, Flake8)
-   - Add tests for new features
-   - Update documentation
-   - Add type hints
-
-4. **Test Your Changes**
-   ```bash
-   # Run tests
-   pytest --cov=src tests/
-   
-   # Format code
-   black src/ tests/
-   
-   # Lint
-   flake8 src/ tests/
-   
-   # Type check
-   mypy src/
-   ```
-
-5. **Submit Pull Request**
-   - Write clear commit messages (use conventional commits)
-   - Reference related issues
-   - Provide detailed description
-   - Update CHANGELOG.md
-
-### Contribution Areas
-
-- 🐛 **Bug Fixes**: Report and fix bugs
-- ✨ **Features**: Add new capabilities
-  - Additional LLM providers (Anthropic Claude, Google Gemini)
-  - New vector databases (Pinecone, Milvus, Weaviate)
-  - Document format support (DOCX, HTML, Markdown)
-- 📚 **Documentation**: Improve guides and examples
-- 🧪 **Tests**: Increase test coverage
-- 🎨 **UI/UX**: Enhance API design
-- 🌍 **Localization**: Add language support
-- ⚡ **Performance**: Optimize speed and efficiency
-
 ## 📊 Performance Benchmarks
 
 ### Embedding Generation (1000 chunks)
@@ -2122,7 +2057,5 @@ async def startup():
 ### ⭐ If you find this project useful, please consider giving it a star!
 
 Made with ❤️ by Boudy Ibrahim
-
-**Powered by PostgreSQL • PGVector • Qdrant • Ollama • Google Colab**
 
 </div>
